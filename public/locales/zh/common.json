@@ -1,0 +1,23 @@
+{
+    "title": "Flare Nav：AI产品与工具的终极指南",
+    "description": "Flare Nav为您提供AI产品和工具的专业见解，探索最新的人工智能解决方案。",
+    "h1": "Flare Nav：AI 产品&工具导航站",
+    "h2": "探索AI解决方案与技术",
+    "menus":{
+        "pricing": "价格",
+        "submit": "提交",
+        "support": "支持",
+        "privacyPolicy": "隐私政策",
+        "signin": "登录",
+        "signup": "注册",
+        "logout": "登出"
+    },
+    "header":{
+        "home": "FlareNav.com"
+    },
+    "footer":{
+        "name": "FlareNav.com",
+        "description": "Flare Nav为您提供AI产品和工具的专业见解，探索最新的人工智能解决方案。",
+        "copyright": "© 2024 FlareNav.com. 版权所有。"
+    }
+}

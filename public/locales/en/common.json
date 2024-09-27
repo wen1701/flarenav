@@ -1,0 +1,23 @@
+{
+  "title": "Flare Nav: Your Ultimate Guide to AI Products & Tools",
+  "description": "Flare Nav offers expert insights into AI products and tools. Explore the latest solutions in artificial intelligence technology.",
+  "h1": "Your Guide to AI Products and Tools",
+  "h2": "Explore AI Solutions and Technologies",
+  "menus":{
+    "pricing": "Pricing",
+    "submit": "Submit",
+    "support": "Support",
+    "privacyPolicy": "Privacy Policy",
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "logout": "Logout"
+  },
+  "header":{
+    "home": "FlareNav.com"
+  },
+  "footer":{
+    "name": "FlareNav.com",
+    "description": "Flare Nav offers expert insights into AI products and tools. Explore the latest solutions in artificial intelligence technology.",
+    "copyright": "© 2024 FlareNav.com. All rights reserved."
+  }
+}

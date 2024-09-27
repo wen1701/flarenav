@@ -1,0 +1,22 @@
+{
+    "title": "Flare Nav: Seu Guia Definitivo de Produtos e Ferramentas de IA",
+    "description": "Flare Nav oferece insights especializados em produtos e ferramentas de IA. Explore as mais recentes soluções em inteligência artificial.",
+    "h1": "Seu Guia de Produtos e Ferramentas de IA",
+    "h2": "Explore Soluções e Tecnologias de IA",
+    "menus":{
+        "pricing": "Preços",
+        "submit": "Enviar",
+        "support": "Suporte",
+        "privacyPolicy": "Política de Privacidade",
+        "signin": "Entrar",
+        "signup": "Registrar",
+        "logout": "Sair"
+    },
+    "header":{
+      "home": "FlareNav.com"
+    },
+    "footer":{
+      "name": "FlareNav.com",
+      "description": "Flare Nav oferece insights especializados em produtos e ferramentas de IA. Explore as mais recentes soluções em inteligência artificial."
+    }
+}

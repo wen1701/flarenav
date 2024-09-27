@@ -1,0 +1,32 @@
+{
+    "host": "flarenav.com",
+    "friends":[
+        {
+            "name": "TTS4FREE",
+            "url": "https://tts4free.com"
+        },
+        {
+            "name": "Links Surf",
+            "url": "https://linkssurf.com"
+        },
+        {
+            "name": "xiaobot",
+            "url": "https://xiaobot.linkssurf.com"
+        }
+    ],
+    "support":{
+        "email": "support@flarenav.com"
+    },
+    "languages":{
+        "de": "Deutsch",
+        "en": "English",
+        "es": "Español",
+        "fr": "Français",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "pt": "Português",
+        "ru": "Русский",
+        "zh": "简体中文"
+    }
+}

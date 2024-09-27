@@ -1,0 +1,22 @@
+{
+    "title": "Flare Nav：AI製品＆ツールの究極ガイド",
+    "description": "Flare NavはAI製品とツールに関する専門的な洞察を提供します。最新の人工知能ソリューションを探索しましょう。",
+    "h1": "AI製品とツールのガイド",
+    "h2": "AIソリューションと技術を探索",
+    "menus":{
+        "pricing": "価格設定",
+        "submit": "提出",
+        "support": "サポート",
+        "privacyPolicy": "プライバシーポリシー",
+        "signin": "サインイン",
+        "signup": "サインアップ",
+        "logout": "ログアウト"
+    },
+    "header":{
+      "home": "FlareNav.com"
+    },
+    "footer":{
+      "name": "FlareNav.com",
+      "description": "Flare NavはAI製品とツールに関する専門的な洞察を提供します。最新の人工知能ソリューションを探索しましょう。"
+    }
+}

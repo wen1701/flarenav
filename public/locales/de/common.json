@@ -1,0 +1,24 @@
+{
+    "title": "Flare Nav: Ihr Ultimativer Leitfaden für KI-Produkte & Werkzeuge",
+    "description": "Flare Nav bietet Experteneinblicke in KI-Produkte und -Tools. Entdecken Sie die neuesten Lösungen der künstlichen Intelligenz.",
+    "h1": "Ihr Leitfaden für KI-Produkte und Werkzeuge",
+    "h2": "Entdecken Sie KI-Lösungen und -Technologien",
+    "menus":{
+        "pricing": "Preise",
+        "submit": "Einreichen",
+        "support": "Support",
+        "privacyPolicy": "Datenschutzrichtlinie",
+        "signin": "Anmelden",
+        "signup": "Registrieren",
+        "logout": "Ausloggen"
+    },
+    "header":{
+      "home": "FlareNav.com"
+    },
+    "footer":{
+      "name": "FlareNav.com",
+      "description": "Flare Nav bietet Experteneinblicke in KI-Produkte und -Tools. Entdecken Sie die neuesten Lösungen der künstlichen Intelligenz.",
+      "copyright": "© 2024 FlareNav.com. Alle Rechte vorbehalten.",
+      "privacy_policy": "Datenschutzrichtlinie"
+    }
+}
