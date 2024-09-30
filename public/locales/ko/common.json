@@ -1,4 +1,5 @@
 {
+    "locale": "한국어",
     "title": "Flare Nav: AI 제품 및 도구에 대한 궁극적인 가이드",
     "description": "Flare Nav는 AI 제품 및 도구에 대한 전문적인 통찰을 제공합니다. 최신 인공지능 솔루션을 탐험해 보세요.",
     "h1": "AI 제품 및 도구 가이드",
@@ -17,6 +18,12 @@
     },
     "footer":{
       "name": "FlareNav.com",
-      "description": "Flare Nav는 AI 제품 및 도구에 대한 전문적인 통찰을 제공합니다. 최신 인공지능 솔루션을 탐험해 보세요."
+      "description": "Flare Nav는 AI 제품 및 도구에 대한 전문적인 통찰을 제공합니다. 최신 인공지능 솔루션을 탐험해 보세요.",
+      "copyright": "© 2024 FlareNav.com. 저작권 소유."
+    },
+    "languagePrompt": "{locale}로 전환하시겠습니까?",
+    "button": {
+        "yes": "예",
+        "no": "아니오"
     }
 }

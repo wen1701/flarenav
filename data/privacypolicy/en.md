@@ -1,9 +1,9 @@
-# Privacy Policy for Woy AI
+# Privacy Policy for Flare Nav
 
 Effective Date: April 19, 2024
 
 ## Overview
-Woy AI operates the website https://woy.ai/ and is committed to protecting your privacy. This privacy policy outlines the types of information we collect, how we use it, and the steps we take to ensure your personal information is handled appropriately.
+Flare Nav operates the website https://flarenav.com/ and is committed to protecting your privacy. This privacy policy outlines the types of information we collect, how we use it, and the steps we take to ensure your personal information is handled appropriately.
 ## Information Collection
 
 ### Personal Data

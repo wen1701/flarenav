@@ -1,8 +1,14 @@
 {
+  "locale": "English",
   "title": "Flare Nav: Your Ultimate Guide to AI Products & Tools",
   "description": "Flare Nav offers expert insights into AI products and tools. Explore the latest solutions in artificial intelligence technology.",
   "h1": "Your Guide to AI Products and Tools",
   "h2": "Explore AI Solutions and Technologies",
+  "languagePrompt": "Would you like to switch to ${locale}?",
+  "button":{
+    "yes": "Yes",
+    "no": "No"
+  },
   "menus":{
     "pricing": "Pricing",
     "submit": "Submit",

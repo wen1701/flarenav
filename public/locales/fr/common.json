@@ -1,4 +1,5 @@
 {
+    "locale": "Français",
     "title": "Flare Nav : Votre Guide Ultime des Produits et Outils d'IA",
     "description": "Flare Nav fournit des conseils d'experts sur les produits et outils d'IA. Explorez les dernières solutions en technologies d'intelligence artificielle.",
     "h1": "Votre Guide des Produits et Outils d'IA",
@@ -17,6 +18,12 @@
     },
     "footer":{
       "name": "FlareNav.com",
-      "description": "Flare Nav fournit des conseils d'experts sur les produits et outils d'IA. Explorez les dernières solutions en technologies d'intelligence artificielle."
+      "description": "Flare Nav fournit des conseils d'experts sur les produits et outils d'IA. Explorez les dernières solutions en technologies d'intelligence artificielle.",
+      "copyright": "© 2024 FlareNav.com. Tous droits réservés."
+    },
+    "languagePrompt": "Voulez-vous passer à {locale} ?",
+    "button": {
+        "yes": "Oui",
+        "no": "Non"
     }
 }

@@ -12,6 +12,7 @@ export default function Header() {
     };
     const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const lang = event.target.value;
+        console.log("lang:", lang);
         navigate(`?lang=${lang}`);
     };
     return (
@@ -52,12 +53,12 @@ export default function Header() {
                     data.baseinfo ? (
                         <select
                             onChange={handleLanguageChange}
-                            value={data.locale}
+                            value={data.locale_search || data.locale_cookie || 'en'}
                             className="text-sm text-gray-700 border-gray-300 rounded-md px-4 py-2 border bg-white"
                         >
                             {Object.entries(data.baseinfo.languages).map((item:any) => (
                                 <option key={item[0]} value={item[0]}>
-                                    <a href={`?lang=${item[0]}`}>{item[1]} </a>
+                                    {item[1]}
                                 </option>
                             ))}
                         </select>

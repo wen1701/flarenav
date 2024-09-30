@@ -1,4 +1,5 @@
 {
+    "locale": "简体中文",
     "title": "Flare Nav：AI产品与工具的终极指南",
     "description": "Flare Nav为您提供AI产品和工具的专业见解，探索最新的人工智能解决方案。",
     "h1": "Flare Nav：AI 产品&工具导航站",
@@ -19,5 +20,10 @@
         "name": "FlareNav.com",
         "description": "Flare Nav为您提供AI产品和工具的专业见解，探索最新的人工智能解决方案。",
         "copyright": "© 2024 FlareNav.com. 版权所有。"
+    },
+    "languagePrompt": "您想切换到{locale}吗？",
+    "button": {
+        "yes": "是",
+        "no": "否"
     }
 }
