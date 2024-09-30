@@ -2,25 +2,40 @@ import fs from 'fs/promises';
 import path from 'path';
 import { marked } from 'marked';
 import matter from 'gray-matter';
+import posts from '../../data/posts.json';
+import baseinfo from '../../data/baseinfo.json';
+import webInfoData from '../../data/web_info.json';
+import privacypolicy from '../../data/privacypolicy.json';
 
-export const loadJsonData = async (paths:string[]) => {
-    const filePath = path.join(process.cwd(), ...paths);
-    const jsonData = await fs.readFile(filePath, 'utf-8');
-    const jsonDataObj = JSON.parse(jsonData);
-    return jsonDataObj;
+export const getAllWebInfo = async () => {
+    const jsonDataObj = JSON.stringify(webInfoData);
+    return JSON.parse(jsonDataObj);
+}
+export const getWebInfo = async (id: string) => {
+    const jsonDataObj = JSON.stringify(webInfoData);
+    const data = JSON.parse(jsonDataObj);
+    
+    // Flatten the structure and find the item with matching id
+    return data.flatMap((group: { details: any[] }) => group.details).find((item: any) => item.id === id);
 }
 
-export const loadMarkdownData = async (paths:string[]) => {
-    const filePath = path.join(process.cwd(), ...paths);
-    const fileContents = await fs.readFile(filePath, 'utf-8');
-    // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents);
+export const getBaseInfo = async () => {
+    const jsonDataObj = JSON.stringify(baseinfo);
+    return JSON.parse(jsonDataObj);
+}
+export const getAllPosts = async () => {
+    const posts_json = JSON.stringify(posts);
+    return JSON.parse(posts_json);
+}
 
-    const mdHtmlText = await marked(matterResult.content);
+export const getPosts = async (slug:string) => {
+    const posts_json = JSON.stringify(posts);
+    const data = JSON.parse(posts_json);
+    return data.find((item:any) => item.slug === slug);
+}
 
-    // Combine the data with the id and contentHtml
-    return {
-        mdHtmlText
-        // ... any other fields you want to include
-    };
+export const getPrivacypolicy = async (locale:string) => {
+    const jsonDataObj = JSON.stringify(privacypolicy);
+    const data = JSON.parse(jsonDataObj);
+    return data.find((item:any) => item.locale === locale);
 }

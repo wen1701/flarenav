@@ -1,9 +1,8 @@
 import { useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { loadJsonData } from "~/utils/data";
-
+import { getBaseInfo } from "~/utils/data";
 export const loader = async() =>{
-    const data = await loadJsonData(["data","baseinfo.json"]);
+    const data = await getBaseInfo();
     return json({data});
 }
 export default function Pricing() {

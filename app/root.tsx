@@ -14,7 +14,8 @@ import { useTranslation } from "react-i18next";
 import i18next from "./i18next.server";
 import { json } from "@remix-run/node";
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { loadJsonData } from "~/utils/data";
+import { getBaseInfo, getPosts } from "~/utils/data";
+
 import Header from "./components/Header";
 import TopSession from "./components/TopSession";
 import Content from "./components/Content";
@@ -50,7 +51,7 @@ export const loader = async({
   const user = userResponse?.data.user ?? null;
   
   //headers.append('Set-Cookie', `lang=${locale}; Path=/; HttpOnly; SameSite=Lax`);
-  const baseinfo = await loadJsonData(["data","baseinfo.json"]);
+  const baseinfo = await getBaseInfo();
   return json(
     {
       locale, 

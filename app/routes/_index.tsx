@@ -2,7 +2,7 @@ import { json, type MetaFunction } from "@remix-run/node";
 import NavCards from "~/components/NavCards";
 import { useLoaderData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { loadJsonData } from "~/utils/data";
+import { getAllWebInfo,getBaseInfo } from "~/utils/data";
 export const meta: MetaFunction = () => {
   const {t} = useTranslation();
 
@@ -13,8 +13,8 @@ export const meta: MetaFunction = () => {
 };
 export const loader = async() =>{
     // 获取 JSON 文件的路径
-    const webInfoData = await loadJsonData(['data', 'web_info.json']);
-    const baseinfo = await loadJsonData(['data', 'baseinfo.json']);
+    const webInfoData = await getAllWebInfo();
+    const baseinfo = await getBaseInfo();
     return json({webInfoData,baseinfo});
 }
 export default function Index() {

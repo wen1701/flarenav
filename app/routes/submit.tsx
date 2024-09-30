@@ -1,9 +1,9 @@
 import { useLoaderData } from "@remix-run/react";
-import { loadJsonData } from "~/utils/data";
+import { getBaseInfo } from "~/utils/data";
 import { json } from "@remix-run/node";
 
 export const loader = async() =>{
-    const data = await loadJsonData(["data","baseinfo.json"]);
+    const data = await getBaseInfo();
     return json({data});
 }
 export default function Sumbit(){

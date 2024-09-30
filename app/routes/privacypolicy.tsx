@@ -1,14 +1,16 @@
 import { useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { loadJsonData } from "~/utils/data";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import i18next from "~/i18next.server";
-import { loadMarkdownData } from "~/utils/data";
+import { getPrivacypolicy } from "~/utils/data";
+
 export const loader = async({
     request
 }:LoaderFunctionArgs) =>{
     let locale = await i18next.getLocale(request);
-    const data = await loadMarkdownData(["data","privacypolicy",`${locale}.md`]);
+    console.log("locale",locale);
+    const data = await getPrivacypolicy(locale);
+    console.log("data",data);
     return json({data});
 }
 export default function About(){
