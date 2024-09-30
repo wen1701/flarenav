@@ -30,7 +30,6 @@ import {
   parseCookieHeader,
 } from "@supabase/ssr";
 import { createServerSupabaseClient } from "./utils/supabase.server";
-import LanguageSwitchPrompt from "./components/LanguageSwitchPrompt";
 export const loader = async({
   params,
   request
