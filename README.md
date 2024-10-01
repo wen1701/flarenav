@@ -6,13 +6,18 @@
 - [x] i18n (ten languages)
 - [x] Json data support
 - [x] Markdown support
-- [x] SEO friendly (use `ssr`)
+- [x] SEO friendly
 - [x] google sign in (use `supabase`)
 - [x] google adsense config
 - [x] google analytics config
+- [ ] search
 - [ ] admin dashboard
 - [ ] dark theme
 - [ ] ...
+
+## Deploy on Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwen1701%2Fflarenav&project-name=flarenav&repository-name=flarenav&external-id=https%3A%2F%2Fgithub.com%2Fwen1701%2Fflarenav%2Ftree%2Fmain)
 
 ## Getting Started
 
