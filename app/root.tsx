@@ -51,6 +51,7 @@ export const loader = async({
   const userResponse = await supabase.auth.getUser();
   const user = userResponse?.data.user ?? null;
   const googleAnalyticsMeasurementId = process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID;
+  const googleAdsAccount = process.env.GOOGLE_ADS_ACCOUNT;
   //headers.append('Set-Cookie', `lang=${locale}; Path=/; HttpOnly; SameSite=Lax`);
   const baseinfo = await getBaseInfo();
   return json(
@@ -61,7 +62,8 @@ export const loader = async({
       locale_cookie,
       locale_i18next,
       locale_search,
-      googleAnalyticsMeasurementId
+      googleAnalyticsMeasurementId,
+      googleAdsAccount
     },
     {
       headers: headers
@@ -101,7 +103,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       locale_cookie, 
       locale_i18next, 
       locale_search, 
-      googleAnalyticsMeasurementId
+      googleAnalyticsMeasurementId,
+      googleAdsAccount
     } = useLoaderData<typeof loader>();
 
     let { i18n, t } = useTranslation();
@@ -141,9 +144,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-adsense-account" content={googleAdsAccount}></meta>
         <Meta />        
         <Links />
         <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsAccount}`}
+     crossOrigin="anonymous"></script>
         {googleAnalyticsMeasurementId && <GoogleAnalytics measurementId={googleAnalyticsMeasurementId}/>}
       </head>
       <body className="flex flex-col min-h-screen">
