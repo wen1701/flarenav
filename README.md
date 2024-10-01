@@ -8,6 +8,8 @@
 - [x] Markdown support
 - [x] SEO friendly (use `ssr`)
 - [x] google sign in (use `supabase`)
+- [x] google adsense config
+- [x] google analytics config
 - [ ] admin dashboard
 - [ ] dark theme
 - [ ] ...
