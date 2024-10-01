@@ -20,6 +20,7 @@ import Header from "./components/Header";
 import TopSession from "./components/TopSession";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import { useState, useEffect } from "react";
 import { useNavigate } from "@remix-run/react";
 import styles from "./tailwind.css?url";
@@ -49,7 +50,7 @@ export const loader = async({
   const {supabase, headers} = createServerSupabaseClient(request);
   const userResponse = await supabase.auth.getUser();
   const user = userResponse?.data.user ?? null;
-  
+  const googleAnalyticsMeasurementId = process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID;
   //headers.append('Set-Cookie', `lang=${locale}; Path=/; HttpOnly; SameSite=Lax`);
   const baseinfo = await getBaseInfo();
   return json(
@@ -59,7 +60,8 @@ export const loader = async({
       baseinfo,
       locale_cookie,
       locale_i18next,
-      locale_search
+      locale_search,
+      googleAnalyticsMeasurementId
     },
     {
       headers: headers
@@ -92,16 +94,26 @@ export const links: LinksFunction = () => [
 
 
 export function Layout({ children }: { children: React.ReactNode }) {
-    let { locale, user, baseinfo, locale_cookie, locale_i18next, locale_search} = useLoaderData<typeof loader>();
+    let { 
+      locale, 
+      user, 
+      baseinfo, 
+      locale_cookie, 
+      locale_i18next, 
+      locale_search, 
+      googleAnalyticsMeasurementId
+    } = useLoaderData<typeof loader>();
+
     let { i18n, t } = useTranslation();
     const [showPrompt, setShowPrompt] = useState(false);
     const [detectedLanguage, setDetectedLanguage] = useState("");
     const matches = useMatches();
     const isAdminRoute = matches.find((match)=>match.id.startsWith("routes/admin"));
-    console.log();
-    console.log("locale_cookie:", locale_cookie);
-    console.log("locale_i18next:", locale_i18next);
-    console.log("locale_search:", locale_search);
+    if (process.env.NODE_ENV === 'development') {
+      console.log("locale_cookie:", locale_cookie);
+      console.log("locale_i18next:", locale_i18next);
+      console.log("locale_search:", locale_search);
+    }
     const lang = locale_search || locale_cookie || 'en';
     const navigate = useNavigate();
     useChangeLanguage(lang);
@@ -132,6 +144,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />        
         <Links />
         <script src="https://accounts.google.com/gsi/client" async defer></script>
+        {googleAnalyticsMeasurementId && <GoogleAnalytics measurementId={googleAnalyticsMeasurementId}/>}
       </head>
       <body className="flex flex-col min-h-screen">
         {showPrompt && (
