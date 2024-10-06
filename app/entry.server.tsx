@@ -22,7 +22,7 @@ const siteurl = process.env.SITE_URL??"";
 const {isSitemapUrl, sitemap} = createSitemapGenerator({
   siteUrl: siteurl,
   generateIndexSitemap: true,
-
+  generateRobotsTxt: true,
 });
 export default async function handleRequest(
   request: Request,
