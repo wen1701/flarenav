@@ -7,7 +7,19 @@ import { json, useLoaderData } from '@remix-run/react';
 import { LoaderFunctionArgs } from '@remix-run/node';
 import invariant from "tiny-invariant";
 import { useTranslation } from 'react-i18next';
-import { getPosts,getWebInfo } from '~/utils/data';
+import { getPosts, getAllPosts, getWebInfo } from '~/utils/data';
+import type { SitemapFunction } from 'remix-sitemap';
+
+export const sitemap: SitemapFunction = async ({ config, request }) => {
+    const posts = await getAllPosts();
+    
+    return posts.map((post:any) => ({
+      loc: `/posts/${post.slug}`, 
+      lastmod: post.updatedAt,
+      exclude: post.isDraft, // exclude this entry
+    }));
+  };
+
 export const loader = async({
     params,
     request

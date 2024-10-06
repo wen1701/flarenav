@@ -3,6 +3,7 @@ import {
   createReadableStreamFromReadable,
   type EntryContext,
 } from "@remix-run/node";
+
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
@@ -13,15 +14,28 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import Backend from "i18next-fs-backend";
 import i18n from "./i18n"; // your i18n configuration file
 import { resolve } from "node:path";
+import { createSitemapGenerator } from 'remix-sitemap';
 
 const ABORT_DELAY = 5000;
+const siteurl = process.env.SITE_URL??"";
 
+const {isSitemapUrl, sitemap} = createSitemapGenerator({
+  siteUrl: siteurl,
+  generateIndexSitemap: true,
+
+});
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
+
+
+  if (isSitemapUrl(request)) {
+    return await sitemap(request, remixContext);
+  }
+
   let callbackName = isbot(request.headers.get("user-agent"))
     ? "onAllReady"
     : "onShellReady";
