@@ -41,7 +41,8 @@ export default function NavCards({data}:NavCardProps){
                                         imgSrc={item.icon}
                                         shortDescription={item.description}
                                         description={item.description}
-                                        link={item.ori_url}
+                                        url={`/posts/${item.id}`}
+                                        ori_url={item.ori_url}
                                     />
                                 ))
                             }

@@ -5,7 +5,8 @@ interface CartProps {
   name:string;
   imgSrc: string;
   title?: string;
-  link?: string;
+  url?: string;
+  ori_url?:string;
   shortDescription?: string;
   keyWorks?: string;
   description?: string;
@@ -14,7 +15,7 @@ interface CartProps {
 export default function Card(props: CartProps) {
   const data = useLoaderData<typeof rootLoader>();
   return (
-    <a href={`${props.link||'#'}?utm_source=${data.baseinfo.host}`} className="group relative block h-56" target="_blank" rel="nofollow" >
+    <a href={`${props.url||'#'}`} className="group relative block h-56" target="_blank" rel="nofollow" >
       <div className="relative flex h-full transform flex-col rounded-lg border-2 border-black bg-white transition-transform group-hover:-translate-y-1">
         <div className="flex-col justify-start p-6 transition-opacity text-gray-900">
           <div className="flex grow items-center">

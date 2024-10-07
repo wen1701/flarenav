@@ -7,7 +7,7 @@ import { json, useLoaderData } from '@remix-run/react';
 import { LoaderFunctionArgs } from '@remix-run/node';
 import invariant from "tiny-invariant";
 import { useTranslation } from 'react-i18next';
-import { getPosts, getAllPosts, getWebInfo } from '~/utils/data';
+import { getPosts, getAllPosts, getWebInfo, getBaseInfo } from '~/utils/data';
 import type { SitemapFunction } from 'remix-sitemap';
 
 export const sitemap: SitemapFunction = async ({ config, request }) => {
@@ -27,8 +27,9 @@ export const loader = async({
     invariant(params.slug, 'expected params.slug');
     const postData = await getPosts(params.slug);
     const webInfo = await getWebInfo(params.slug);
+    const baseinfo = await getBaseInfo();
     const locale =  i18next.getLocale(request);
-    return json({locale,postData,webInfo});
+    return json({locale,postData,webInfo,baseinfo});
 }
 export async function generateMetadata({params}: { params: { slug: string } }) {
     const webInfo = await getWebInfo(params.slug);
@@ -39,7 +40,7 @@ export async function generateMetadata({params}: { params: { slug: string } }) {
 }
 
 export default function Post() {
-    const {locale,postData,webInfo} = useLoaderData<typeof loader>();
+    const {locale,postData,webInfo,baseinfo} = useLoaderData<typeof loader>();
     console.log(webInfo);
     const {t} = useTranslation();
     return (
@@ -54,7 +55,11 @@ export default function Post() {
                 <div className="flex flex-col space-y-4 space-y-reverse justify-center items-center">
                   <h1 className="text-5xl font-bold text-gray-900 sm:text-6xl mb-6">{webInfo.name}</h1>
                   <h2 className="text-lg text-gray-600 mt-6">{webInfo.description}</h2>
-                  <a className="flex justify-center items-center rounded-md border border-indigo-600 bg-indigo-600 hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring px-4 py-3 text-md font-semibold text-white shadow-sm" target="_blank" rel="dofollow" href="https://www.blaze.ai/?utm_source=woy.ai">
+                  <a className="flex justify-center items-center rounded-md border border-indigo-600 bg-indigo-600 hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring px-4 py-3 text-md font-semibold text-white shadow-sm" 
+                        target="_blank" 
+                        rel="dofollow" 
+                        href={`${webInfo.ori_url}?utm_source=${baseinfo.host}`}>
+
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                         <path fillRule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z" clipRule="evenodd"/>
                     </svg>
