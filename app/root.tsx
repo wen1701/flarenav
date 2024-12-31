@@ -51,19 +51,19 @@ export const loader = async({
   const userResponse = await supabase.auth.getUser();
   const user = userResponse?.data.user ?? null;
   const googleAnalyticsMeasurementId = process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID;
-  const googleAdsAccount = process.env.GOOGLE_ADS_ACCOUNT;
+
   //headers.append('Set-Cookie', `lang=${locale}; Path=/; HttpOnly; SameSite=Lax`);
   const baseinfo = await getBaseInfo();
   return json(
     {
-      locale, 
+      locale,
       user,
       baseinfo,
       locale_cookie,
       locale_i18next,
       locale_search,
       googleAnalyticsMeasurementId,
-      googleAdsAccount
+
     },
     {
       headers: headers
@@ -79,9 +79,9 @@ export const links: LinksFunction = () => [
     rel:"stylesheet",
     href: styles
   },
-  { 
-    rel: "preconnect", 
-    href: "https://fonts.googleapis.com" 
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com"
   },
   {
     rel: "preconnect",
@@ -96,15 +96,15 @@ export const links: LinksFunction = () => [
 
 
 export function Layout({ children }: { children: React.ReactNode }) {
-    let { 
-      locale, 
-      user, 
-      baseinfo, 
-      locale_cookie, 
-      locale_i18next, 
-      locale_search, 
+    let {
+      locale,
+      user,
+      baseinfo,
+      locale_cookie,
+      locale_i18next,
+      locale_search,
       googleAnalyticsMeasurementId,
-      googleAdsAccount
+
     } = useLoaderData<typeof loader>();
 
     let { i18n, t } = useTranslation();
@@ -144,17 +144,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="google-adsense-account" content={googleAdsAccount}></meta>
-        <Meta />        
+
+        <Meta />
         <Links />
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
-        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${googleAdsAccount}`}
-     crossOrigin="anonymous"></script>
-        {googleAnalyticsMeasurementId && <GoogleAnalytics measurementId={googleAnalyticsMeasurementId}/>}
+        {
+          googleAnalyticsMeasurementId && (
+            <>
+              <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsMeasurementId}`}></script>
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', ${googleAnalyticsMeasurementId});
+                  `,
+                }}
+                />
+              </>
+          )
+      }
       </head>
       <body className="flex flex-col min-h-screen">
         {showPrompt && (
-               <div className="z-10 w-96 fixed border border-gray-200 bottom-4 right-4 bg-white p-4 rounded-lg shadow-lg">              
+               <div className="z-10 w-96 fixed border border-gray-200 bottom-4 right-4 bg-white p-4 rounded-lg shadow-lg">
                <h2 className="text-lg font-bold text-gray-900">Language Detected</h2>
 
               <p className="mt-2 text-sm text-gray-500">
@@ -186,9 +199,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <Footer/>
           </>
         )}
-        
+
         <ScrollRestoration />
         <Scripts />
+        {googleAnalyticsMeasurementId && <GoogleAnalytics measurementId={googleAnalyticsMeasurementId}/>}
       </body>
     </html>
   );

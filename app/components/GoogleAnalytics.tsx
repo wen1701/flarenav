@@ -1,31 +1,42 @@
 import { useEffect } from 'react';
-
+import { useLocation } from "@remix-run/react";
 interface GoogleAnalyticsProps {
   measurementId: string;
 }
 
 export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
+  const location = useLocation();
+
   useEffect(() => {
-    // Google Analytics script
-    const script = document.createElement('script');
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    script.async = true;
-    document.head.appendChild(script);
+    console.log(measurementId);
+    if (window.gtag) {
+      window.gtag("config", measurementId, {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location,measurementId]);
 
-    script.onload = () => {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
-        window.dataLayer.push(args);
-      }
-      gtag('js', new Date());
-      gtag('config', measurementId);
-    };
+  // useEffect(() => {
+  //   // Google Analytics script
+  //   const script = document.createElement('script');
+  //   script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  //   script.async = true;
+  //   document.head.appendChild(script);
 
-    return () => {
-      // Clean up the script when the component unmounts
-      document.head.removeChild(script);
-    };
-  }, [measurementId]);
+  //   script.onload = () => {
+  //     window.dataLayer = window.dataLayer || [];
+  //     function gtag(...args: any[]) {
+  //       window.dataLayer.push(args);
+  //     }
+  //     gtag('js', new Date());
+  //     gtag('config', measurementId);
+  //   };
+
+  //   return () => {
+  //     // Clean up the script when the component unmounts
+  //     document.head.removeChild(script);
+  //   };
+  // }, [measurementId]);
 
   return null; // This component doesn't render anything
 }
