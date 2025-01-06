@@ -202,7 +202,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         <ScrollRestoration />
         <Scripts />
-        {googleAnalyticsMeasurementId && <GoogleAnalytics measurementId={googleAnalyticsMeasurementId}/>}
+        {/* {googleAnalyticsMeasurementId && <GoogleAnalytics measurementId={googleAnalyticsMeasurementId}/>} */}
       </body>
     </html>
   );
