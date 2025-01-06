@@ -157,11 +157,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', ${googleAnalyticsMeasurementId});
+                  gtag('config', '${googleAnalyticsMeasurementId}');
                   `,
                 }}
-                />
-              </>
+              />
+            </>
           )
       }
       </head>
@@ -202,7 +202,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         <ScrollRestoration />
         <Scripts />
-        {/* {googleAnalyticsMeasurementId && <GoogleAnalytics measurementId={googleAnalyticsMeasurementId}/>} */}
       </body>
     </html>
   );
